@@ -1,5 +1,5 @@
 {
-  "name": "controllIO",
+  "name": "controllio",
   "version": "1.0.0",
   "main": "src/index.js",
   "license": "MIT",
@@ -8,12 +8,14 @@
     "debug": "^4.1.1",
     "dotenv": "^8.2.0",
     "express": "^4.17.1",
-    "loudness": "^0.3.0",
+    "loudness": "IanOliv/node-loudness",
+    "ngrok": "^3.2.7",
     "robotjs": "^0.6.0",
     "socket.io": "^2.3.0"
   },
   "scripts": {
-    "dev": "DEBUG=controller:* nodemon src"
+    "dev": "DEBUG=controller:* nodemon src --stack_size=1200",
+    "test": "jest"
   },
   "devDependencies": {
     "@types/cors": "^2.8.6",
