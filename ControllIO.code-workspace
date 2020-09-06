@@ -1,0 +1,27 @@
+{
+    "folders": [
+        {   "name":"root",
+            "path": "."
+        },
+        {
+            "name": "main",
+            "path": "src/main"
+        },
+        {
+            "name": "utils",
+            "path": "src/utils"
+        },
+        {
+           "name": "modules",
+           "path": "src/modules"
+        },
+        {
+           "name": "webSocket",
+           "path": "src/modules/webSocket"
+        }       ,
+        {
+            "name": "computer",
+            "path": "src/modules/computer"
+        }
+    ]
+}
