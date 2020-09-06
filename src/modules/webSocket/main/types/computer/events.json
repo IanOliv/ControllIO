@@ -1,0 +1,7 @@
+{
+    "_types": {
+        "greetings": "computer:greetings",
+        "outputChanges": "mobile:outputChange"
+        
+    }
+}

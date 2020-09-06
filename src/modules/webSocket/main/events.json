@@ -1,0 +1,6 @@
+{  
+    "_types":{
+        "get":"type:get",
+        "error":"error:message"
+    }
+}

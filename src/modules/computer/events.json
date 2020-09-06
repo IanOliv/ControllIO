@@ -1,0 +1,8 @@
+{
+    "computer":{
+        "settings":"computer:settings",
+        "getVolume":"computer:getVolumes",
+        "getVolumeCalback": "computer:getVolumes#callback",
+        "setVolume":"computer:setVolumes"
+   }
+}

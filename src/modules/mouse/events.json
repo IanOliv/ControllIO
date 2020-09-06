@@ -1,0 +1,6 @@
+{"mouse":{
+    "up":"mouse:up",
+    "down": "mouse:down",
+    "right": "mouse:right",
+    "left": "mouse:left"
+}}

@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>try</title>
+    <link rel="stylesheet" href="https://meyerweb.com/eric/tools/css/reset/reset200802.css">
+    <style>
+        .block {
+            display: block;
+            width: 100%;
+            border: none;
+            background-color: #4CAF50;
+            color: white;
+            padding: 14px 28px;
+            font-size: 16px;
+            cursor: pointer;
+            text-align: center;
+        }
+    
+        .block:hover {
+            background-color: #ddd;
+            color: black;
+        }
+
+        #handler {
+            background: purple;
+            width:100vw;
+            height: 100vh;
+            padding-top: 5vh;
+        }
+    </style>
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+    integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+        integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"
+        integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN"
+        crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"
+        integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV"
+        crossorigin="anonymous"></script>
+    <!-- <script src="/socket.io/socket.io.js"></script> -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.3.0/socket.io.js"
+        integrity="sha512-v8ng/uGxkge3d1IJuEo6dJP8JViyvms0cly9pnbfRxT6/31c3dRWxIiwGnMSWwZjHKOuY3EVmijs7k1jz/9bLA=="
+        crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.0.0/p5.js"></script>
+    <!-- <script src="https://hammerjs.github.io/dist/hammer.min.js"></script> -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/zingtouch/1.0.6/zingtouch.min.js"></script>
+    
+
+</head>
+<body id="handler">
+    <div  class="container">
+        
+
+        <div class="card" style="width: 18rem;">
+            <div class="card-body">
+                <h5 class="card-title">Card title</h5>
+                <h6 class="card-subtitle mb-2 text-muted">Card subtitle</h6>
+                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's
+                    content.</p>
+
+                <button id="pr" type="button" class="btn btn-warning">Previous</button>
+                <button id="str"type="button" class="btn btn-dark">Stop</button>
+                <button id="next" type="button" class="btn btn-warning">Next</button>
+                <input id="volumeInput" type="range" min="0" max="1" value="0" step="any">
+            </div>
+        </div>
+
+
+
+    </div>
+    <script>
+        const input =document.getElementById("volumeInput")
+        let socket = io('http://localhost:3000/?type=ytmusic');
+        
+        socket.on('yt:outputChange', ({volume}) => {  input.value= volume})
+
+        input.addEventListener('input',(e)=>{
+            console.log(e)
+            socket.emit('ytmusic:changeOutputs', { type: e.type, volume: e.target.value })
+        })
+
+        document.querySelector('button#next').addEventListener('click',()=>{
+             socket.emit('ytmusic:changeOutputs', { type:'dir', commd: 'next' })
+
+        })
+
+        // function up (){
+        //     socket.emit('mouse:up', true);
+        // }
+         
+        // const el =document.getElementById('handler')
+        // // handler
+        // // .addEventListener('mousedown', e => {
+        // //     socket.emit('log',{helo:"mousedown"})
+        // // })
+        // // handler.addEventListener('mousemove', e => {
+        // //    socket.emit("log",{helo:"mousemove"})
+        // // })
+
+        //         function over_handler(event) {console.log(JSON.stringify(event) )}
+        //             function enter_handler(event) {console.log(JSON.stringify(event) )}
+        //             function down_handler(event) { console.log(JSON.stringify(event))}
+        //             function move_handler(event) {console.log(JSON.stringify(event) )}
+        //             function up_handler(event) {console.log(JSON.stringify(event) )}
+        //             function cancel_handler(event) {console.log(JSON.stringify(event) )}
+        //             function out_handler(event) { console.log(JSON.stringify(event))}
+        //             function leave_handler(event) { console.log(JSON.stringify(event))}
+        //             function gotcapture_handler(event) {console.log(JSON.stringify(event) )}
+        //             function lostcapture_handler(event) {console.log(JSON.stringify(event)) }
+
+        //      el.onpointerover = over_handler;
+        //         el.onpointerenter = enter_handler;
+        //         el.onpointerdown = down_handler;
+        //         el.onpointermove = move_handler;
+        //         el.onpointerup = up_handler;
+        //         el.onpointercancel = cancel_handler;
+        //         el.onpointerout = out_handler;
+        //         el.onpointerleave = leave_handler;
+        //         el.gotpointercapture = gotcapture_handler;
+        //         el.lostpointercapture = lostcapture_handler;
+
+
+        // // window.addEventListener('mouseup', e => {
+        // //       socket.emit("log",{helo:"mouseup"})
+        // // })
+
+        // // handler.addEventListener('touchstart', (e)=>{socket.emit("log",{helo:"touchstart",e: JSON.stringify(e)})}, false);
+        // // handler.addEventListener('touchmove', (e)=>{
+        // //     socket.emit("log",{helo:"touchmove",e: e.touches})
+        // //     console.log(e)
+        
+        // // }, false);
+        // // handler.addEventListener('touchcancel', (e)=>{socket.emit("log",{helo:"touchcancel",e: JSON.stringify(e)})}, false);
+        // // handler.addEventListener('touchend', (e)=>{socket.emit("log",{helo:"touchend",e:JSON.stringify(e)})}, false);
+
+
+
+
+
+
+        // //     console.log('aaXXXXa')
+            
+            
+         
+        // //     var containerElement = document.querySelector('body')
+        // //     var activeRegion = new ZingTouch.Region(containerElement);
+        // //     // var myTapGesture = new ZingTouch.Tap({ maxDelay: 100 });
+               
+        // //     activeRegion.bind(containerElement, 'swipe', function (e) {
+        // //             console.log(JSON.stringify(e.detail));
+        // //             console.log('Testeeee')
+        // //             console.log(JSON.stringify(e));
+        // //              socket.emit('mouse:down', e.detail);
+        // //     });
+
+        // //     // hammer.on('swipe', function (ev) {
+        // //     //         socket.emit('mouse:down', true);
+        // //     //     });
+        // //     console.log('aaXXXXa')
+        // // //  setInterval(()=>{
+        // // //         console.log('cccc')
+        // //     //  socket.emit('mouse:up', true);
+        // // //      console.log('dddd')
+        // // //  },1000)
+        // // //  console.log('bbbbb')
+
+        // // // function setup(){
+        // // //     createCanvas(720, 400);
+        // // //     background(0);
+        // // //     noSmooth();
+
+        // // //  }
+
+
+
+
+    </script>
+</body>
+</html>

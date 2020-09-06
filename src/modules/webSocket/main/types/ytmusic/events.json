@@ -1,0 +1,8 @@
+{
+    "_types":{
+        "isListen":"ytmusic:islisten",
+        "greetings":"ytmusic:greetings",
+        "onOutputsChange":"ytmusic:changeOutputs",
+        "getOthersClients":"ytmusic:getOthersClients"
+    }
+}

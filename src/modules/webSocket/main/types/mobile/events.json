@@ -1,0 +1,6 @@
+{
+    "_types": {
+        "greetings": "mobile:greetings",
+        "outputChanges":"mobile:outputChange"
+    }
+}
