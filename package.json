@@ -26,7 +26,7 @@
     "dev:ts": "DEBUG=controller:* ts-node-dev -r tsconfig-paths/register --respawn --transpile-only --ignore-watch node_modules --no-notify src/index.ts",
     "dev": "DEBUG=controller:* nodemon src --stack_size=1200",
     "test": "jest",
-    "ctrIO": "node src/cli"
+    "ctrIO": "node src/cli/index.js"
   },
   "devDependencies": {
     "@babel/cli": "^7.10.1",
