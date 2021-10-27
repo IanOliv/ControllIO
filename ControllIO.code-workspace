@@ -19,9 +19,14 @@
            "name": "webSocket",
            "path": "src/modules/webSocket"
         }       ,
-        {
-            "name": "computer",
-            "path": "src/modules/computer"
-        }
+        // {
+        //     "name": "computer",
+        //     "path": "src/modules/computer"
+        // },
+
+        // {
+        //     "name": "cli",
+        //     "path": "/Users/ianoliveira/github.com/IanOliv/ws-cli/xcli"
+        // }
     ]
 }

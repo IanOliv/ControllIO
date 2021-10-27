@@ -48,5 +48,5 @@
     },
     "include": [
         "src/**/*"
-    ]
+, "src/modules/webSocket/main/types/.ytmusic"    ]
 }
