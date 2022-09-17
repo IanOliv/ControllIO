@@ -10,4 +10,4 @@ class Main {
     loader()
   }
 }
-module.exports = Main
+export default Main
